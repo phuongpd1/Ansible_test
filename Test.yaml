@@ -1,0 +1,17 @@
+---
+- hosts: k8s_server
+  tasks:
+    - name: Test ping
+      ping:
+    - name: Get ip
+      command:
+        cmd: ip a
+        warn: yes
+- hosts: all
+  tasks:
+    - name: Test ping
+      ping:
+    - name: Get ip
+      command:
+        cmd: ip a
+        warn: yes
