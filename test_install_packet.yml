@@ -1,0 +1,20 @@
+---
+# Ví dụ vẫn sử dụng máy local
+# Bỏ 'connection' và thiết lập hosts đến 'remote' cho kết nối remote
+- hosts: repo_server
+  connection: local
+  become: yes
+  become_user: root
+  tasks:
+   - name: Install Nginx
+     apt:
+       name: nginx
+       state: installed
+       update_cache: true
+     notify:
+      - Start Nginx
+  handlers:
+   - name: Start Nginx
+     service:
+       name: nginx
+       state: started
